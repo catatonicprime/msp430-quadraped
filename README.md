@@ -40,3 +40,11 @@ cd /src
 printf "prog a.out\nexit\n" |  sudo mspdebug rf2500
 ```
 **TODO:** I think mspdebug can be run without sudo if the user is in the correct group.
+
+# The Board
+I forget where my designs are for the board, so I'm just going to describe it based on the one that is mostly put together.
+
+- 1x SMT MSP430G2553 (or maybe its a 2... maybe we should take a photo with the microscope)
+- 1x LDO Voltage Regulator
+- 1x SMT 74HC595
+- General use breakouts for the GPIO & the 74HC595 outputs
