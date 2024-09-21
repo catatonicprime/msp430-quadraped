@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+  - name: Perform an ansible "ping"
+    ansible.builtin.ping:
