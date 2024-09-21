@@ -3,3 +3,12 @@
   tasks:
   - name: Perform an ansible "ping"
     ansible.builtin.ping:
+  - name: apt install packages
+    become: true
+    ansible.builtin.apt:
+      name:
+      - build-essential
+      - binutils-msp430
+      - gdb-msp430
+      - msp430mcu
+      - mspdebug
