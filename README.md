@@ -47,4 +47,23 @@ I forget where my designs are for the board, so I'm just going to describe it ba
 - 1x SMT MSP430G2553 (or maybe its a 2... maybe we should take a photo with the microscope)
 - 1x LDO Voltage Regulator
 - 1x SMT 74HC595
+- 1x 32.767khz crystal
 - General use breakouts for the GPIO & the 74HC595 outputs
+
+# The Servos
+According the datasheet:
+```
+Position "0" (1.5 ms pulse) is middle, "90" (~2ms pulse) is middle,  
+is all the way to the right, "-90" (~1ms pulse) is all the way to the left.
+```
+
+I am super confused as to why there are two "middles." But what do we do when we're confused?
+
+Carry-on and maybe we'll revelation about it later.
+
+# The timer...
+The PWM period is 50Hz, or 1 cycle per 20ms... with a 32,768kz clock this means we have about 655.36 (656 in integer, taking the ceiling to ensure a "start" signal doesn't start too early) clock cycles per PWM. I think this means our CCR0 will be 656 when counting in an UP mode.
+
+The Duty Cycel is 1-2ms with 1.5ms being "middle" (allegedly)
+So the duty cycle is 5%-10% of the overall?
+
