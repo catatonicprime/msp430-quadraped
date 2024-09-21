@@ -20,3 +20,17 @@ We'll be using a stock VM published in hashicorp, like Ubuntu, built and configu
 We'll be using Virtual Box & passing an MSP430 launchpad through to it via USB.
 
 We'll need to test the build toolchain too. Probably with the typically blinky lights built onto the dev boards. Though an interesting thing I was thinking about earlier too is that we could do some types of tests using the built-in simulator too. Could be good for building tests like ensuring the watchdog timer is correctly disabled on a project, or that a specific function is executing within a set number of cycles. This would make the process of deving for a project more CI/CD like giving us software verification prior to cutting anything on actual hardware. Food for thought.
+
+## Building with msp430-gcc
+To generate an ELF from source do the following:
+
+```bash
+cd /src
+msp430-gcc -ggdb -mmcu=msp430g2553 main.c
+```
+To program this binary to the target board first pass the USB device to the VM and then use mspdebug:
+```bash
+cd /src
+sudo mspdebug rf2500 prog a.out
+```
+**TODO:** I think mspdebug can be run without sudo if the user is in the correct group.
