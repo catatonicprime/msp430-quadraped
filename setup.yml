@@ -8,6 +8,7 @@
     ansible.builtin.apt:
       name:
       - build-essential
+      - gcc-msp430
       - binutils-msp430
       - gdb-msp430
       - msp430mcu
