@@ -63,6 +63,9 @@ Vagrant.configure("2") do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
     vb.cpus = 4
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--usbehci", "on"]  # Enables USB 2.0 controller
+    vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "Texas Instruments MSP-FET430UIF [0100]", "--vendorid", "0x0451", "--productid", "0xF432"]
   end
   #
   # View the documentation for the provider you are using for more
