@@ -7,9 +7,15 @@ Until now... if now is sometime in the future. I mean let's finish it!
 1. ~~Create a repo to track the work~~
 1. ~~Build a development environment~~
 1. Write some code (tm)
+    1. Set the CPU clock
+    1. PWM using Timer_A (probably) & built-in DCO
+    1. 74HC595 serialization
+    1. Distributing 74HC595 at PWM resolution for all 8x servos
 1. Test that code
+    1. Use DSO for analysis
 1. Design new boards? Maybe?
 1. Move the code to the final boards
+1. Battery-ize the whole thing
 
 # The Development Environment
 We'll be using a stock VM published in hashicorp, like Ubuntu, built and configured using vagrant & maybe ansible. If I recall correctly this VM really just needs to have:
