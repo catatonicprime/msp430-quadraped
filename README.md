@@ -37,6 +37,6 @@ msp430-gcc -ggdb -mmcu=msp430g2553 main.c
 To program this binary to the target board first pass the USB device to the VM and then use mspdebug:
 ```bash
 cd /src
-sudo mspdebug rf2500 prog a.out
+printf "prog a.out\nexit\n" |  sudo mspdebug rf2500
 ```
 **TODO:** I think mspdebug can be run without sudo if the user is in the correct group.
