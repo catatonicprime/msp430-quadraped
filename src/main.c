@@ -1,7 +1,7 @@
 #include <msp430.h>
 
 #define PWM_PERIOD 327
-#define MIN_PWM 0
+#define MIN_PWM 16
 #define MAX_PWM 60
 
 
@@ -10,7 +10,7 @@ void CPU1Mhz();
 
 volatile int pwmlength = PWM_PERIOD; // period of 20ms (I think?)
 volatile int position = MIN_PWM; // period of 20ms (I think?)
-volatile int desiredPos = MAX_PWM; // period of 20ms (I think?)
+volatile int desiredPos = MIN_PWM; // period of 20ms (I think?)
 
 /* CCR1 Interrupt*/
 #ifdef __GNUC__
@@ -31,10 +31,6 @@ void callBack1(void)
         pwmlength = PWM_PERIOD;
         position = desiredPos + 1;
         P1OUT ^= BIT6;
-        // desiredPos++;
-        // if (desiredPos > MAX_PWM) {
-        //   desiredPos = MIN_PWM;
-        // }
       }
       position--;
       if (!position) {
